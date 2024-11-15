@@ -49,3 +49,4 @@ build/
 dist/
 *.apk
 *.aab
+*.vsidx
