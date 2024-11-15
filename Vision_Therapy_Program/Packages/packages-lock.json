@@ -67,6 +67,15 @@
       "dependencies": {},
       "url": "https://packages.unity.com"
     },
+    "com.unity.postprocessing": {
+      "version": "3.4.0",
+      "depth": 0,
+      "source": "registry",
+      "dependencies": {
+        "com.unity.modules.physics": "1.0.0"
+      },
+      "url": "https://packages.unity.com"
+    },
     "com.unity.settings-manager": {
       "version": "2.0.1",
       "depth": 2,
@@ -138,6 +147,7 @@
     "com.unity.xr.legacyinputhelpers": {
       "version": "2.1.11",
       "depth": 2,
+
       "source": "registry",
       "dependencies": {
         "com.unity.modules.vr": "1.0.0",
@@ -146,7 +156,8 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.xr.management": {
-      "version": "4.4.0",
+
+      "version": "4.5.0",
       "depth": 1,
       "source": "registry",
       "dependencies": {
@@ -157,8 +168,19 @@
       },
       "url": "https://packages.unity.com"
     },
+
+    "com.unity.xr.mock-hmd": {
+      "version": "1.4.0-preview.2",
+      "depth": 0,
+      "source": "registry",
+      "dependencies": {
+        "com.unity.xr.management": "4.0.1"
+      },
+      "url": "https://packages.unity.com"
+    },
     "com.unity.xr.oculus": {
       "version": "4.4.0",
+
       "depth": 0,
       "source": "registry",
       "dependencies": {

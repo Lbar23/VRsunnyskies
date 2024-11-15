@@ -49,5 +49,8 @@ build/
 dist/
 *.apk
 *.aab
+
 *.zip
 *.vsidx
+=======
+
