@@ -50,3 +50,4 @@ dist/
 *.apk
 *.aab
 *.zip
+*.vsidx
