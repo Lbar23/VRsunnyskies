@@ -25,13 +25,13 @@ public class RandomObjectPlacer : MonoBehaviour
     private Vector3 tableSize;
     private float tableWidth;
     private float tableTopY;
-    private float marginX = 0;
-    private float marginZ = 0;
 
     private static Vector3 textOffset = new Vector3(0, 0.05f, 0);
 
     private float totalDistance = 0f;
     private int totalMeasurements = 0;
+
+    private List<Bounds> placedObjectBounds = new List<Bounds>();
 
     void Start()
     {
@@ -66,9 +66,6 @@ public class RandomObjectPlacer : MonoBehaviour
                 tableTopY = tableRenderer.bounds.max.y; // Top surface Y position
             }
         }
-
-        marginX = tableSize.x * 0.2f / 2;
-        marginZ = tableSize.z * 0.2f / 2;
     }
 
     private IEnumerator WaitForUserInput()
@@ -146,10 +143,12 @@ public class RandomObjectPlacer : MonoBehaviour
             PlaceObjectsInLine(chosenObjects);
 
             yield return WaitForUserInput();
+            //yield return new WaitForSeconds(1f);
 
             List<GameObject> ghostObjects = DrawDistancesToOriginalObjects(originalPositions);
 
             yield return WaitForUserInput();
+            //yield return new WaitForSeconds(5f);
 
             CleanupRound(originalPositions, ghostObjects);
 
@@ -167,7 +166,7 @@ public class RandomObjectPlacer : MonoBehaviour
 
         TextMeshPro averageText = Instantiate(distanceTextOriginal);
         averageText.text = $"Average Distance: {averageDistance:F1} cm";
-        averageText.transform.position = tableCenter + new Vector3(0, 0.5f, 0);
+        averageText.transform.position = tableCenter + new Vector3(0, 1f, 0);
         averageText.transform.LookAt(Camera.main.transform);
         averageText.transform.Rotate(0, 180, 0);
         averageText.color = CalculateColor(averageDistance);
@@ -177,12 +176,9 @@ public class RandomObjectPlacer : MonoBehaviour
     {
         GameObject ghostObj = Instantiate(obj);
 
-        // Get the offset between object center and pivot
-        Bounds bounds = obj.GetComponent<Collider>().bounds;
-        Vector3 centerOffset = bounds.center - obj.transform.position;
-
-        // Position at original location accounting for center offset
-        ghostObj.transform.position = originalPosition - centerOffset;
+        // Simply set the position and rotation to match the original
+        ghostObj.transform.position = originalPosition;
+        ghostObj.transform.rotation = obj.transform.rotation;
 
         // Make the ghost object non-interactive
         Destroy(ghostObj.GetComponent<Rigidbody>());
@@ -192,7 +188,7 @@ public class RandomObjectPlacer : MonoBehaviour
         foreach (Renderer renderer in ghostObj.GetComponentsInChildren<Renderer>())
         {
             Material material = renderer.material;
-            Color greenTint = new Color(0.4f, 1f, 0.4f, 0.5f); // Light green with 50% transparency
+            Color greenTint = new Color(0.4f, 1f, 0.4f, 0.5f);
             material.color = greenTint;
         }
 
@@ -222,7 +218,7 @@ public class RandomObjectPlacer : MonoBehaviour
 
             // Get the object's center using its bounds
             Bounds bounds = obj.GetComponent<Collider>().bounds;
-            Vector3 currentPosition = bounds.center;
+            Vector3 currentCenter = bounds.center;
             Vector3 originalCenter = originalPosition + (bounds.center - obj.transform.position);
 
             // Create new LineRenderer component
@@ -233,13 +229,13 @@ public class RandomObjectPlacer : MonoBehaviour
             lineRenderer.startWidth = 0.01f;
             lineRenderer.endWidth = 0.01f;
             lineRenderer.SetPosition(0, originalCenter);
-            lineRenderer.SetPosition(1, currentPosition);
+            lineRenderer.SetPosition(1, currentCenter);
 
 
             TextMeshPro distanceText = Instantiate(distanceTextOriginal);
 
             // Calculate distance
-            float lineLength = Vector3.Distance(originalCenter, currentPosition) * 100;
+            float lineLength = Vector3.Distance(originalCenter, currentCenter) * 100;
 
             totalDistance += lineLength;
             totalMeasurements++;
@@ -249,7 +245,7 @@ public class RandomObjectPlacer : MonoBehaviour
             lineRenderer.endColor = gradedColor;
 
             // Position the text at the midpoint of the line
-            Vector3 midpoint = (originalCenter + currentPosition) / 2;
+            Vector3 midpoint = (originalCenter + currentCenter) / 2;
 
             // Update text
             distanceText.text = lineLength.ToString("F1") + " cm";
@@ -309,6 +305,7 @@ public class RandomObjectPlacer : MonoBehaviour
 
     private List<GameObject> PlaceObjectsRandomly()
     {
+        placedObjectBounds.Clear();  // Clear the bounds list before placing new objects
         //int numObjectsToPlace = Random.Range(minObjects, maxObjects + 1);
         int numObjectsToPlace = 3;
         List<GameObject> selectionList = new List<GameObject>(allObjects);
@@ -335,20 +332,50 @@ public class RandomObjectPlacer : MonoBehaviour
         return chosenObjects;
     }
 
-    Vector3 GetRandomPositionOnTableTop(GameObject objectToPlace)
+    private Vector3 GetRandomPositionOnTableTop(GameObject objectToPlace)
     {
-        float x = Random.Range(tableCenter.x - (tableSize.x / 2) + marginX,
-                              tableCenter.x + (tableSize.x / 2) - marginX);
-        float z = Random.Range(tableCenter.z - (tableSize.z / 2) + marginZ,
-                              tableCenter.z + (tableSize.z / 2) - marginZ);
-        float y = tableTopY + GetHalfHeight(objectToPlace);
-
-        // Get the offset between the object's center and its pivot
         Bounds bounds = objectToPlace.GetComponent<Collider>().bounds;
-        Vector3 centerOffset = bounds.center - objectToPlace.transform.position;
+        float objectWidth = bounds.size.x;
+        float objectDepth = bounds.size.z;
 
-        // Return position adjusted for center offset
-        return new Vector3(x, y, z) - centerOffset;
+        // Calculate usable table area (60% of total table size, leaving 20% margin on each side)
+        float usableTableWidth = tableSize.x * 0.6f;
+        float usableTableDepth = tableSize.z * 0.6f;
+
+        while (true)
+        {
+            float x = Random.Range(
+                tableCenter.x - (usableTableWidth / 2) + (objectWidth / 2),
+                tableCenter.x + (usableTableWidth / 2) - (objectWidth / 2)
+            );
+            float z = Random.Range(
+                tableCenter.z - (usableTableDepth / 2) + (objectDepth / 2),
+                tableCenter.z + (usableTableDepth / 2) - (objectDepth / 2)
+            );
+            float y = tableTopY + GetHalfHeight(objectToPlace);
+
+            Vector3 proposedPosition = new Vector3(x, y, z);
+
+            // Create bounds for the proposed position
+            Bounds proposedBounds = new Bounds(proposedPosition, bounds.size);
+
+            // Check if this position overlaps with any existing objects
+            bool overlaps = false;
+            foreach (Bounds existingBounds in placedObjectBounds)
+            {
+                if (proposedBounds.Intersects(existingBounds))
+                {
+                    overlaps = true;
+                    break;
+                }
+            }
+
+            if (!overlaps)
+            {
+                placedObjectBounds.Add(proposedBounds);
+                return proposedPosition;
+            }
+        }
     }
 
     private float GetHalfHeight(GameObject obj)
