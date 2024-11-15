@@ -3,6 +3,7 @@ using System.Collections;
 using OculusSampleFramework;
 using TMPro;
 using Oculus.Platform;
+using UnityEngine.SceneManagement;
 
 public class RandomSpawnInFrontOfCamera : MonoBehaviour
 {
@@ -39,36 +40,6 @@ public class RandomSpawnInFrontOfCamera : MonoBehaviour
         StartCoroutine(InitializeHandTracking());
     }
 
-    void Update()
-    {
-        // Check if the left hand is tracked and pinching
-        if (leftHand.IsTracked)
-        {
-            DetectPinch(leftHand);
-        }
-
-        // Check if the right hand is tracked and pinching
-        if (rightHand.IsTracked)
-        {
-            DetectPinch(rightHand);
-        }
-    }
-
-    private void DetectPinch(OVRHand hand)
-    {
-        // Get the pinch strength for the thumb and index finger
-        float pinchStrength = hand.GetFingerPinchStrength(OVRHand.HandFinger.Index);
-
-        // Check if the user is pinching with the index finger and thumb
-        if (pinchStrength > pinchThreshold)
-        {
-            Debug.Log($"{hand.name} is pinching!");
-        }
-        else
-        {
-            Debug.Log($"{hand.name} is not pinching.");
-        }
-    }
 
 
     private IEnumerator InitializeHandTracking()
@@ -189,6 +160,9 @@ public class RandomSpawnInFrontOfCamera : MonoBehaviour
         }
 
         DrawAverage();
+
+        yield return new WaitForSeconds(3f);
+        SceneManager.LoadScene("Task7");
 
     }
 

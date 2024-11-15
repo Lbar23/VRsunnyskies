@@ -7,7 +7,7 @@ public class StartMenuScript : MonoBehaviour
 {
     public void StartNormalMode()
     {
-        SceneManager.LoadScene("Task4");  // Loads the task4 scene
+        SceneManager.LoadScene("Task7");  // Loads the task4 scene
     }
 
     public void QuitGame()
