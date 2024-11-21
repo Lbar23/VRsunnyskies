@@ -238,7 +238,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1275266641364890, guid: e3109ccf9db0f54408d5c02b496761c1, type: 3}
       propertyPath: m_Name
-      value: flashlight
+      value: Flashlight
       objectReference: {fileID: 0}
     - target: {fileID: 4153173015106888, guid: e3109ccf9db0f54408d5c02b496761c1, type: 3}
       propertyPath: m_LocalScale.x
@@ -2275,7 +2275,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1985338178271116, guid: 48ec186542777474bb236dff1694340c, type: 3}
       propertyPath: m_Name
-      value: pills
+      value: Pills
       objectReference: {fileID: 0}
     - target: {fileID: 4624005263380358, guid: 48ec186542777474bb236dff1694340c, type: 3}
       propertyPath: m_LocalScale.x
@@ -2772,7 +2772,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1756438538067288, guid: 9b7d674bd208a2a4aa6f2ff5594f9c95, type: 3}
       propertyPath: m_Name
-      value: walkie
+      value: Walkie
       objectReference: {fileID: 0}
     - target: {fileID: 4247995746445546, guid: 9b7d674bd208a2a4aa6f2ff5594f9c95, type: 3}
       propertyPath: m_LocalScale.x
@@ -2946,7 +2946,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1089726810798314, guid: f2eb86ba579ab5c4db54a92a8f0c3b7b, type: 3}
       propertyPath: m_Name
-      value: tape
+      value: Tape
       objectReference: {fileID: 0}
     - target: {fileID: 4917197792674636, guid: f2eb86ba579ab5c4db54a92a8f0c3b7b, type: 3}
       propertyPath: m_LocalScale.x
@@ -4289,8 +4289,7 @@ MonoBehaviour:
   - {fileID: 375943663}
   table: {fileID: 1271446297}
   distanceTextOriginal: {fileID: 252288702}
-  minObjects: 3
-  maxObjects: 4
+  numIterations: 8
   rightHand: {fileID: 66325574}
   leftHand: {fileID: 266422137}
 --- !u!4 &2076116797

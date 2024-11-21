@@ -15,8 +15,7 @@ public class RandomObjectPlacer : MonoBehaviour
     public GameObject table; // Assign the table GameObject
     public TextMeshPro distanceTextOriginal;
 
-    public int minObjects = 3;
-    public int maxObjects = 6;
+    public int numIterations = 8;
 
     public OVRHand rightHand;
     public OVRHand leftHand;
@@ -35,6 +34,7 @@ public class RandomObjectPlacer : MonoBehaviour
 
     void Start()
     {
+        Logger.Log("=========== Task 7: Starting ===========");
         Initialize();
         StartCoroutine(StartTask7());
     }
@@ -131,9 +131,9 @@ public class RandomObjectPlacer : MonoBehaviour
         totalDistance = 0f;
         totalMeasurements = 0;
 
-        for (int iteration = 0; iteration < 10; iteration++)
+        for (int iteration = 0; iteration < numIterations; iteration++)
         {
-            Debug.Log($"Starting iteration {iteration + 1} of 10");
+            Logger.Log($"Task 7: Starting iteration {iteration + 1} of {numIterations}");
 
             List<GameObject> chosenObjects = PlaceObjectsRandomly();
             Dictionary<GameObject, Vector3> originalPositions = SaveOriginalPositions(chosenObjects);
@@ -142,13 +142,13 @@ public class RandomObjectPlacer : MonoBehaviour
 
             PlaceObjectsInLine(chosenObjects);
 
-            yield return WaitForUserInput();
-            //yield return new WaitForSeconds(1f);
+            //yield return WaitForUserInput();
+            yield return new WaitForSeconds(1f);
 
             List<GameObject> ghostObjects = DrawDistancesToOriginalObjects(originalPositions);
 
-            yield return WaitForUserInput();
-            //yield return new WaitForSeconds(5f);
+            //yield return WaitForUserInput();
+            yield return new WaitForSeconds(5f);
 
             CleanupRound(originalPositions, ghostObjects);
 
@@ -170,6 +170,8 @@ public class RandomObjectPlacer : MonoBehaviour
         averageText.transform.LookAt(Camera.main.transform);
         averageText.transform.Rotate(0, 180, 0);
         averageText.color = CalculateColor(averageDistance);
+
+        Logger.Log($"Task 7: Average Distance: {averageDistance:F1} cm");
     }
 
     private GameObject ShowOriginalObject(GameObject obj, Vector3 originalPosition)
@@ -236,6 +238,9 @@ public class RandomObjectPlacer : MonoBehaviour
 
             // Calculate distance
             float lineLength = Vector3.Distance(originalCenter, currentCenter) * 100;
+            
+            string objectName = obj.name.Replace("(Clone)", "").Trim();
+            Logger.Log($"Task 7: Distance for {objectName}: {lineLength:F1} cm");
 
             totalDistance += lineLength;
             totalMeasurements++;
