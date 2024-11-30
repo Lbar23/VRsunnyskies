@@ -162,9 +162,25 @@ public class RandomSpawnInFrontOfCamera : MonoBehaviour
         DrawAverage();
 
         yield return new WaitForSeconds(3f);
-        SceneManager.LoadScene("Task7");
+
+        JumpToNextTask();
 
     }
+
+
+    private void JumpToNextTask()
+    {
+        if (PlayerPrefs.GetInt("TutorialMode", 0) == 1)
+        {
+            PlayerPrefs.SetInt("NextTutorial", 7);
+            SceneManager.LoadScene("TutorialPlayer");
+        }
+        else
+        {
+            SceneManager.LoadScene("Task7");
+        }
+    }
+
 
     private bool IsPinching(OVRHand hand)
     {
