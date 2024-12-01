@@ -1,5 +1,6 @@
 {
   "Version": 1,
+<<<<<<< Updated upstream
   "WorkspaceRootPath": "C:\\Users\\lbj12\\OneDrive\\Documents\\GitHub\\sunnyskies\\Vision_Therapy_Program\\",
   "Documents": [
     {
@@ -17,6 +18,13 @@
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\lbj12\\OneDrive\\Documents\\GitHub\\sunnyskies\\Vision_Therapy_Program\\Assets\\Task4_Assets\\Scripts\\StartTimer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\Task4_Assets\\Scripts\\StartTimer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+=======
+  "WorkspaceRootPath": "C:\\Users\\Luis\\Documents\\GitHub\\sunnyskies\\Vision_Therapy_Program\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{1005F4A3-0369-CF0B-4FBF-29754F509EBB}|Assembly-CSharp.csproj|C:\\Users\\Luis\\Documents\\GitHub\\sunnyskies\\Vision_Therapy_Program\\assets\\scripts\\startmenuscript.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1005F4A3-0369-CF0B-4FBF-29754F509EBB}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\startmenuscript.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+>>>>>>> Stashed changes
     }
   ],
   "DocumentGroupContainers": [
@@ -31,6 +39,7 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
+<<<<<<< Updated upstream
               "Title": "task.cs",
               "DocumentMoniker": "C:\\Users\\lbj12\\OneDrive\\Documents\\GitHub\\sunnyskies\\Vision_Therapy_Program\\Assets\\task.cs",
               "RelativeDocumentMoniker": "Assets\\task.cs",
@@ -78,6 +87,16 @@
               "ViewState": "AgIAABUAAAAAAAAAAAAAADIAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-12-01T09:29:37.6Z",
+=======
+              "Title": "StartMenuScript.cs",
+              "DocumentMoniker": "C:\\Users\\Luis\\Documents\\GitHub\\sunnyskies\\Vision_Therapy_Program\\Assets\\Scripts\\StartMenuScript.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\StartMenuScript.cs",
+              "ToolTip": "C:\\Users\\Luis\\Documents\\GitHub\\sunnyskies\\Vision_Therapy_Program\\Assets\\Scripts\\StartMenuScript.cs",
+              "RelativeToolTip": "Assets\\Scripts\\StartMenuScript.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAA8AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-15T05:52:04.008Z",
+>>>>>>> Stashed changes
               "EditorCaption": ""
             }
           ]
