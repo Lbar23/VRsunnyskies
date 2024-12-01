@@ -20,7 +20,7 @@ public class RandomSpawnInFrontOfCamera : MonoBehaviour
     public TextMeshPro generalPurposeText;
 
     private float distanceSum = 0;
-    private int roundCount = 10;
+    public int roundCount = 8;
     private static MeshRenderer ballRenderer;
     private static LineRenderer fingerToBallLine;
     private static Vector3 textOffset = new Vector3(0, 0.05f, 0);
@@ -29,6 +29,8 @@ public class RandomSpawnInFrontOfCamera : MonoBehaviour
 
     public void Start()
     {
+
+        Logger.Log("=========== Task 5: Starting ===========");
         ballRenderer = ball.GetComponent<MeshRenderer>();
 
         fingerToBallLine = gameObject.AddComponent<LineRenderer>();
@@ -125,6 +127,8 @@ public class RandomSpawnInFrontOfCamera : MonoBehaviour
         for (int i = 0; i < roundCount; i++)
         {
 
+            Logger.Log($"Task 5: Starting iteration {i + 1} of {roundCount}");
+
             SpawnBall();
             screenMessage.text = "Focus on the ball and its location within space.";
             yield return new WaitForSeconds(5f);
@@ -136,12 +140,24 @@ public class RandomSpawnInFrontOfCamera : MonoBehaviour
 
             yield return new WaitUntil(() => IsPinching(leftHand) || IsPinching(rightHand));
 
+            var (hand, handModel, indexFingerTipPosition) = GetIndexFingerTipPosition(leftHand, rightHand);
+
+
+            // - 1.5 from ball to ball center
+            float lineLength = Vector3.Distance(indexFingerTipPosition, ball.transform.position) * 100 - 1.5f;
+            // ensures that there are no negative distances
+            if (lineLength < 0) lineLength = 0;
+
+            if(lineLength > 50) {
+                Logger.Log($"Task 5: Misread hand signal. Restarting iteration");
+                i--;
+                continue;
+            }
 
             screenMessage.text = "See how close you were.";
 
             ballRenderer.enabled = true;
 
-            var (hand, handModel, indexFingerTipPosition) = GetIndexFingerTipPosition(leftHand, rightHand);
 
             DrawDistance(indexFingerTipPosition, ball.transform.position);
             GameObject clonedHand = DrawHandAtTimeOfGuess(hand, handModel);
@@ -172,12 +188,12 @@ public class RandomSpawnInFrontOfCamera : MonoBehaviour
     {
         if (PlayerPrefs.GetInt("TutorialMode", 0) == 1)
         {
-            PlayerPrefs.SetInt("NextTutorial", 7);
+            PlayerPrefs.SetInt("NextTutorial", 6);
             SceneManager.LoadScene("TutorialPlayer");
         }
         else
         {
-            SceneManager.LoadScene("Task7");
+            SceneManager.LoadScene("Task6");
         }
     }
 
@@ -212,6 +228,8 @@ public class RandomSpawnInFrontOfCamera : MonoBehaviour
 
         WriteMessage(message, 26, CalculateColor(average), 2);
 
+        Logger.Log($"Task 5: Average Distance: {average:F1} cm");
+
     }
 
     private Color CalculateColor(float distance)
@@ -242,16 +260,21 @@ public class RandomSpawnInFrontOfCamera : MonoBehaviour
     private void DrawDistance(Vector3 pointA, Vector3 pointB)
     {
 
+        
+        // - 1.5 from ball to ball center
+        float lineLength = Vector3.Distance(pointA, pointB) * 100 - 1.5f;
+        // ensures that there are no negative distances
+        if (lineLength < 0) lineLength = 0;
+
         fingerToBallLine.enabled = true;
         distanceText.enabled = true;
 
         fingerToBallLine.SetPosition(0, pointA);
         fingerToBallLine.SetPosition(1, pointB);
 
-        // - 1.5 from ball to ball center
-        float lineLength = Vector3.Distance(pointA, pointB) * 100 - 1.5f;
-        // ensures that there are no negative distances
-        if (lineLength < 0) lineLength = 0;
+
+        
+        Logger.Log($"Task 7: Distance to ball: {lineLength:F1} cm");
 
         // add to average sum
         distanceSum += lineLength;

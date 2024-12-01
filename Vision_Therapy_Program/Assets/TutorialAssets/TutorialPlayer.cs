@@ -20,7 +20,8 @@ public class TutorialPlayer : MonoBehaviour
     IEnumerator Start()
     {
         // Retrieve the task result from PlayerPrefs
-        taskResult = PlayerPrefs.GetInt("TaskResult", 0); // Default to 0 if not set
+        
+        taskResult = PlayerPrefs.GetInt("NextTutorial", 0); // Default to 0 if not set
 
         // Select the video based on the task result
         switch (taskResult)

@@ -379,7 +379,7 @@ MonoBehaviour:
   task4: {fileID: 0}
   task5: {fileID: 32900000, guid: 29cbdd38640a9514292010e9babdba57, type: 3}
   task6: {fileID: 0}
-  task7: {fileID: 0}
+  task7: {fileID: 32900000, guid: 3691632716730444e8475a5f6264cfe8, type: 3}
 --- !u!1 &569092386
 GameObject:
   m_ObjectHideFlags: 0
