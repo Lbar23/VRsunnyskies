@@ -5,9 +5,14 @@ using UnityEngine.SceneManagement;
 
 public class StartMenuScript : MonoBehaviour
 {
+
+    public void Start(){
+        Logger.Log("");
+        Logger.Log("Vision Therapy Programm starting");
+    }
+
     public void StartNormalMode()
     {
-        PlayerPrefs.SetInt("NextTutorial", 5);
         PlayerPrefs.SetInt("TutorialMode", 0);
         SceneManager.LoadScene("Task5");
     }
@@ -15,7 +20,7 @@ public class StartMenuScript : MonoBehaviour
     public void StartTutorialMode()
     {
         PlayerPrefs.SetInt("TutorialMode", 1);
-        PlayerPrefs.SetInt("NextTutorial", 5);
+        PlayerPrefs.SetInt("NextTutorial", 1);
         SceneManager.LoadScene("TutorialPlayer");
     }
 
