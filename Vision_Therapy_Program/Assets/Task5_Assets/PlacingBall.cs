@@ -188,12 +188,12 @@ public class RandomSpawnInFrontOfCamera : MonoBehaviour
     {
         if (PlayerPrefs.GetInt("TutorialMode", 0) == 1)
         {
-            PlayerPrefs.SetInt("NextTutorial", 6);
+            PlayerPrefs.SetInt("NextTutorial", 7);
             SceneManager.LoadScene("TutorialPlayer");
         }
         else
         {
-            SceneManager.LoadScene("Task6");
+            SceneManager.LoadScene("Task7");
         }
     }
 
