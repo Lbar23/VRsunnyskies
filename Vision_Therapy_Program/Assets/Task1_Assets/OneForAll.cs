@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class OneForAll : MonoBehaviour
 {
@@ -20,6 +21,19 @@ public class OneForAll : MonoBehaviour
             objects[currentIndex].SetActive(true);
     }
 
+    private void JumpToNextTask()
+    {
+        if (PlayerPrefs.GetInt("TutorialMode", 0) == 1)
+        {
+            PlayerPrefs.SetInt("NextTutorial", 2);
+            SceneManager.LoadScene("TutorialPlayer");
+        }
+        else
+        {
+            SceneManager.LoadScene("Task2");
+        }
+    }
+
     void Update()
     {
         // Increment the timer
@@ -33,6 +47,8 @@ public class OneForAll : MonoBehaviour
 
             // Optionally, you can stop showing objects
             HideAllObjects();
+
+            JumpToNextTask();
             return; // Exit the Update loop to stop the logic
         }
 

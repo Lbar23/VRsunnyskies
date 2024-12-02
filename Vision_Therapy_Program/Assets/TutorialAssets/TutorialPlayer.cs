@@ -23,6 +23,8 @@ public class TutorialPlayer : MonoBehaviour
         
         taskResult = PlayerPrefs.GetInt("NextTutorial", 0); // Default to 0 if not set
 
+        Logger.Log("play video " + taskResult);
+
         // Select the video based on the task result
         switch (taskResult)
         {

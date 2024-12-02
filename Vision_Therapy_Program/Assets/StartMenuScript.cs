@@ -14,11 +14,13 @@ public class StartMenuScript : MonoBehaviour
     public void StartNormalMode()
     {
         PlayerPrefs.SetInt("TutorialMode", 0);
-        SceneManager.LoadScene("Task5");
+        SceneManager.LoadScene("Task1");
     }
 
     public void StartTutorialMode()
     {
+
+        Logger.Log("Start tutorial mode");
         PlayerPrefs.SetInt("TutorialMode", 1);
         PlayerPrefs.SetInt("NextTutorial", 1);
         SceneManager.LoadScene("TutorialPlayer");
