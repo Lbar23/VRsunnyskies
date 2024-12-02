@@ -46,10 +46,12 @@ public class Task2Task : MonoBehaviour
             ResetBallMaterials();
             LightUpBall(currentBallIndex);
 
-            countdown = 15f;
+            // Set countdown to a random value between 3 and 5 seconds
+            countdown = Random.Range(3f, 5f);
+
             while (countdown > 0)
             {
-                timerText.text = "Next ball in: " + countdown.ToString("F0");
+                timerText.text = "Please look at the lit ball";
                 yield return new WaitForSeconds(1f);
                 countdown--;
             }
@@ -57,7 +59,7 @@ public class Task2Task : MonoBehaviour
             currentBallIndex = (currentBallIndex + 1) % balls.Length;
             checker++;
             Debug.Log(checker);
-            if (checker > 10)
+            if (checker > 16)
             {
                 gameStarted = false;
                 ResetBallMaterials();
@@ -79,7 +81,7 @@ public class Task2Task : MonoBehaviour
         }
 
         // Start the next task (Task4) here
-        SceneManager.LoadScene("Task4");
+        JumpToNextTask();
 
         // Add your Task4 logic here
     }
@@ -99,5 +101,18 @@ public class Task2Task : MonoBehaviour
     {
         balls[index].GetComponent<Renderer>().material = litMaterials[index]; // Change material
         ballLights[index].enabled = true;  // Turn on the light
+    }
+
+    private void JumpToNextTask()
+    {
+        if (PlayerPrefs.GetInt("TutorialMode", 0) == 1)
+        {
+            PlayerPrefs.SetInt("NextTutorial", 4);
+            SceneManager.LoadScene("TutorialPlayer");
+        }
+        else
+        {
+            SceneManager.LoadScene("Task4");
+        }
     }
 }
