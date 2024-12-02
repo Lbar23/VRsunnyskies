@@ -91,6 +91,18 @@ public class BallPositionTracker : MonoBehaviour
         }
 
         // Load the next scene after countdown
-        SceneManager.LoadScene("Task5");
+        JumpToNextTask();
+    }
+    private void JumpToNextTask()
+    {
+        if (PlayerPrefs.GetInt("TutorialMode", 0) == 1)
+        {
+            PlayerPrefs.SetInt("NextTutorial", 5);
+            SceneManager.LoadScene("TutorialPlayer");
+        }
+        else
+        {
+            SceneManager.LoadScene("Task5");
+        }
     }
 }
