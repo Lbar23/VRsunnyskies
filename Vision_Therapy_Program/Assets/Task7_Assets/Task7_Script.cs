@@ -142,13 +142,13 @@ public class RandomObjectPlacer : MonoBehaviour
 
             PlaceObjectsInLine(chosenObjects);
 
-            //yield return WaitForUserInput();
-            yield return new WaitForSeconds(1f);
+            yield return WaitForUserInput();
+            //yield return new WaitForSeconds(1f);
 
             List<GameObject> ghostObjects = DrawDistancesToOriginalObjects(originalPositions);
 
-            //yield return WaitForUserInput();
-            yield return new WaitForSeconds(5f);
+            yield return WaitForUserInput();
+            //yield return new WaitForSeconds(5f);
 
             CleanupRound(originalPositions, ghostObjects);
 
