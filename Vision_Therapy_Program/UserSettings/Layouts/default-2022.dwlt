@@ -119,7 +119,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 100}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 107
+  controlID: 113
   draggingID: 0
 --- !u!114 &6
 MonoBehaviour:
@@ -145,7 +145,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 16192}
   vertical: 1
-  controlID: 44
+  controlID: 52
   draggingID: 0
 --- !u!114 &7
 MonoBehaviour:
@@ -171,7 +171,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 50}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 45
+  controlID: 43
   draggingID: 0
 --- !u!114 &8
 MonoBehaviour:
@@ -660,11 +660,11 @@ MonoBehaviour:
   m_Rotation:
     m_Target: {x: -0.42203003, y: 0.03655875, z: -0.01704418, w: -0.9056911}
     speed: 2
-    m_Value: {x: -0.4233854, y: 0.036532912, z: -0.017098892, w: -0.9050513}
+    m_Value: {x: -0.42203, y: 0.03655875, z: -0.01704418, w: -0.905691}
   m_Size:
     m_Target: 0.8660254
     speed: 2
-    m_Value: 0.8660361
+    m_Value: 0.8660254
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -728,7 +728,7 @@ MonoBehaviour:
       scrollPos: {x: 0, y: 0}
       m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: 1835fbff6835fbffd660fbff6a75fbffba75fbffd4a0fbffe0c6fbffe40ffcff3410fcffa63bfcff8a64fcffae79fcfffe79fcff5ea6fcff06cffcfffef4fcff0440fdff9a52fdffea52fdff2a61fdffb084fdff52a9fdffd2cefdffacf4fdffce11feffa614feff981dfeff7a2efeffca2efeff5452feff2455feff2265feff9870feff468ffeffc895feffa6a8fefff6a8feffe4d2feff7ef7fefff61cffffc842ffffe45fffffb462ffff2486ffff7c87ffffde92ffffe292ffffe692ffff4897ffff8e9affff929affffc89affffa8c0ffff40c1fffff4efffff28320100d853010022540100b6e70100
+      m_ExpandedIDs: c610ffff1611ffff043bffffc85fffff5a85ffff0cabffff26c8ffff62d0ffff32d3fffff4faffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -792,7 +792,7 @@ MonoBehaviour:
   m_ShowGizmos: 0
   m_TargetDisplay: 0
   m_ClearColor: {r: 0, g: 0, b: 0, a: 0}
-  m_TargetSize: {x: 807.5, y: 465.5}
+  m_TargetSize: {x: 1615, y: 931}
   m_TextureFilterMode: 0
   m_TextureHideFlags: 61
   m_RenderIMGUI: 1
@@ -807,10 +807,10 @@ MonoBehaviour:
     m_VRangeLocked: 0
     hZoomLockedByDefault: 0
     vZoomLockedByDefault: 0
-    m_HBaseRangeMin: -201.875
-    m_HBaseRangeMax: 201.875
-    m_VBaseRangeMin: -116.375
-    m_VBaseRangeMax: 116.375
+    m_HBaseRangeMin: -403.75
+    m_HBaseRangeMax: 403.75
+    m_VBaseRangeMin: -232.75
+    m_VBaseRangeMax: 232.75
     m_HAllowExceedBaseRangeMin: 1
     m_HAllowExceedBaseRangeMax: 1
     m_VAllowExceedBaseRangeMin: 1
@@ -830,7 +830,7 @@ MonoBehaviour:
       y: 21
       width: 807.5
       height: 465.5
-    m_Scale: {x: 2, y: 2}
+    m_Scale: {x: 1, y: 1}
     m_Translation: {x: 403.75, y: 232.75}
     m_MarginLeft: 0
     m_MarginRight: 0
@@ -838,12 +838,12 @@ MonoBehaviour:
     m_MarginBottom: 0
     m_LastShownAreaInsideMargins:
       serializedVersion: 2
-      x: -201.875
-      y: -116.375
-      width: 403.75
-      height: 232.75
+      x: -403.75
+      y: -232.75
+      width: 807.5
+      height: 465.5
     m_MinimalGUI: 1
-  m_defaultScale: 2
+  m_defaultScale: 1
   m_LastWindowPixelSize: {x: 1615, y: 973}
   m_ClearInEditMode: 1
   m_NoCameraWarning: 1
@@ -909,10 +909,10 @@ MonoBehaviour:
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 392.5}
-    m_SelectedIDs: 76b20000
-    m_LastClickedID: 45686
-    m_ExpandedIDs: 00000000deb1000070b200007cb2000096730100987301009a7301009c730100
+    scrollPos: {x: 0, y: 108.5}
+    m_SelectedIDs: 10a50000
+    m_LastClickedID: 42256
+    m_ExpandedIDs: 000000007aa40000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -940,7 +940,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000deb10000
+    m_ExpandedIDs: 000000007aa40000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -967,7 +967,7 @@ MonoBehaviour:
   m_ListAreaState:
     m_SelectedInstanceIDs: 
     m_LastClickedInstanceID: 0
-    m_HadKeyboardFocusLastEvent: 1
+    m_HadKeyboardFocusLastEvent: 0
     m_ExpandedInstanceIDs: c6230000b2fbfbff1a650000da2301005aab000000000000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
