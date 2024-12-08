@@ -70,17 +70,20 @@ public class RandomObjectPlacer : MonoBehaviour
 
     private IEnumerator WaitForUserInput()
     {
-        while (!IsBothHandsPinching())
+        // Wait for the user to press the button
+        while (!OVRInput.Get(OVRInput.Button.One))
         {
-            yield return null;
+            yield return null; // Wait until the next frame
         }
-        // Wait for gesture release to prevent accidental double-triggers
-        while (IsBothHandsPinching())
-        {
-            yield return null;
-        }
-    }
 
+        // Wait for the user to release the button
+        while (OVRInput.Get(OVRInput.Button.One))
+        {
+            yield return null; // Prevent double-trigger
+        }
+
+        Debug.Log("Button One Pressed!");
+    }
     private bool IsBothHandsPinching()
     {
         if (!rightHand.IsTracked || !leftHand.IsTracked)
