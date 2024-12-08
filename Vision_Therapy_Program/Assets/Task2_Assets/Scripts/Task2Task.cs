@@ -59,7 +59,7 @@ public class Task2Task : MonoBehaviour
             currentBallIndex = (currentBallIndex + 1) % balls.Length;
             checker++;
             Debug.Log(checker);
-            if (checker > 16)
+            if (checker > 26)
             {
                 gameStarted = false;
                 ResetBallMaterials();

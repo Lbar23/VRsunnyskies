@@ -374,9 +374,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   videoPlayer: {fileID: 558289549}
   task1: {fileID: 32900000, guid: 9503047551ca14691880b20db77ba88b, type: 3}
-  task2: {fileID: 32900000, guid: 13c024ec67d2c7646a83db1c1dc875b8, type: 3}
+  task2: {fileID: 32900000, guid: 60986ffe39aa3ef4fa20e564e1e525b9, type: 3}
   task3: {fileID: 32900000, guid: e5af65f493a159440a27be5c67131892, type: 3}
-  task4: {fileID: 32900000, guid: 3ec5a95071b597745a74ac62e120abd2, type: 3}
+  task4: {fileID: 32900000, guid: 87f182790370d8d43b1e02e80a10e0a0, type: 3}
   task5: {fileID: 32900000, guid: 29cbdd38640a9514292010e9babdba57, type: 3}
   task6: {fileID: 32900000, guid: a46c7a2babf304f648e91e2ac6108a20, type: 3}
   task7: {fileID: 32900000, guid: 3691632716730444e8475a5f6264cfe8, type: 3}

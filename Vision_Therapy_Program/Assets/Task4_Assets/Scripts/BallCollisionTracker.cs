@@ -62,7 +62,7 @@ public class BallPositionTracker : MonoBehaviour
         }
 
         // Check if score reaches 10
-        if (score >= 10)
+        if (score >= 15)
         {
             TaskComplete();
         }
