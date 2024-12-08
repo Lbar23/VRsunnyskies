@@ -42,3 +42,15 @@ Thumbs.db
 
 # Log files
 *.log
+
+
+# Build artifacts
+build/
+dist/
+*.apk
+*.aab
+
+*.zip
+*.vsidx
+=======
+
