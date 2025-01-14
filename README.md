@@ -30,6 +30,7 @@ The program includes the following tasks:
 1. **Eye-Tracking**
    - Follow a moving object with your eyes while keeping your head still.
    - Enhances visual focus and tracking ability.
+     https://github.com/user-attachments/assets/2dd70dc0-da5d-4ce3-8419-d588f0088dff
 
 2. **Brock String**
    - Utilize a string with colored balls to improve depth perception and convergence.
